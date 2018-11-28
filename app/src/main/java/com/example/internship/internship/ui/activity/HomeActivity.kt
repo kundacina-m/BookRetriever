@@ -1,32 +1,28 @@
 package com.example.internship.internship.ui.activity
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
+import com.example.internship.internship.App
 import com.example.internship.internship.R
 import com.example.internship.internship.adapter.BooksAdapter
-import com.example.internship.internship.db.BooksDatabase
-import com.example.internship.internship.model.Books
+import com.example.internship.internship.model.Book
 import com.example.internship.internship.ui.BooksListViewModel
+import com.example.internship.internship.ui.MvvmActivity
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
-class HomeActivity : AppCompatActivity(),BooksAdapter.OnItemClickListener {
+class HomeActivity : MvvmActivity(),BooksAdapter.OnItemClickListener {
 
     private var booksRecyclerView: RecyclerView? = null
     private var booksAdapter: BooksAdapter? = null
 
-    private var viewModel: BooksListViewModel? = null
-
-    private var db: BooksDatabase? = null
-
+    private var bookListViewModel: BooksListViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
-        db = BooksDatabase.getDataBase(this)
 
         booksRecyclerView = findViewById(R.id.fullList)
         booksAdapter = BooksAdapter(arrayListOf(), this)
@@ -34,14 +30,24 @@ class HomeActivity : AppCompatActivity(),BooksAdapter.OnItemClickListener {
         booksRecyclerView!!.layoutManager = LinearLayoutManager(this)
         booksRecyclerView!!.adapter = booksAdapter
 
-        viewModel = ViewModelProviders.of(this).get(BooksListViewModel::class.java)
+        bookListViewModel = App.injectBookListViewModel()
 
-        viewModel!!.getListBooks().observe(this, Observer { books ->
-            booksAdapter!!.addBooks(books!!)
-        })
+        subscribe(bookListViewModel!!.getBooks()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    showBooks(it)
+                }, {
+                    Log.d("activity",it.stackTrace.toString())
+                }))
+
     }
 
-    override fun onItemClick(book: Books) {
+    private fun showBooks(data: List<Book>) {
+       booksAdapter!!.addBooks(data)
+    }
+
+    override fun onItemClick(book: Book) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

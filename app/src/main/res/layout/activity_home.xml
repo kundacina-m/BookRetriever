@@ -20,6 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp"
+        android:scrollbars="vertical"
         tools:listitem="@layout/list_item"/>
 
     <include

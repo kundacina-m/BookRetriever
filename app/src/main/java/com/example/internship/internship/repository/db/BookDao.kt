@@ -1,24 +1,31 @@
-package com.example.internship.internship.db
+package com.example.internship.internship.repository.db
 
-import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
-import com.example.internship.internship.model.Books
+import com.example.internship.internship.model.Book
+import io.reactivex.Single
 
 @Dao
-interface BooksDao {
+interface BookDao {
 
     /**
      * Insert books into the database
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertBook(book: Books)
+    fun insertAll(books: List<Book>)
 
     /**
      * Get all the books from database
      */
     @Query("SELECT * FROM books")
-    fun getBooks(): LiveData<List<Books>>
+    fun getBooks(): Single<List<Book>>
+
+    /**
+     * Delete all the books from database
+     */
+    @Query("delete from books")
+    fun deleteAllBooks()
+
 }

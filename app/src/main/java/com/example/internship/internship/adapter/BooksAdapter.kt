@@ -6,15 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.internship.internship.R
-import com.example.internship.internship.model.Books
+import com.example.internship.internship.model.Book
 
-class BooksAdapter(books: ArrayList<Books>, listener: OnItemClickListener) : RecyclerView.Adapter<BooksAdapter.RecyclerViewHolder>() {
+class BooksAdapter(books: ArrayList<Book>, listener: OnItemClickListener) : RecyclerView.Adapter<BooksAdapter.RecyclerViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
         return RecyclerViewHolder(LayoutInflater.from(parent!!.context).inflate(R.layout.list_item, parent, false))
     }
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
-        var currentBook: Books = listBooks[position]
+        var currentBook: Book = listBooks[position]
 
         var titleBook = currentBook.title
         var descriptionBook = currentBook.description
@@ -22,14 +22,15 @@ class BooksAdapter(books: ArrayList<Books>, listener: OnItemClickListener) : Rec
         holder!!.mTitle.text = titleBook
         holder!!.mDescription.text = descriptionBook
 
-        holder.bind(currentBook, listenerBooks)    }
+        holder.bind(currentBook, listenerBooks)
+    }
 
-    private var listBooks: List<Books> = books
+    private var listBooks: List<Book> = books
 
     private var listenerBooks: OnItemClickListener = listener
 
     interface OnItemClickListener {
-        fun onItemClick(book: Books)
+        fun onItemClick(book: Book)
     }
 
 
@@ -37,7 +38,7 @@ class BooksAdapter(books: ArrayList<Books>, listener: OnItemClickListener) : Rec
         return listBooks.size
     }
 
-    fun addBooks(listBooks: List<Books>) {
+    fun addBooks(listBooks: List<Book>) {
         this.listBooks = listBooks
         notifyDataSetChanged()
     }
@@ -47,7 +48,7 @@ class BooksAdapter(books: ArrayList<Books>, listener: OnItemClickListener) : Rec
         var mTitle = itemView.findViewById<TextView>(R.id.tvTitle)!!
         var mDescription = itemView.findViewById<TextView>(R.id.tvDesc)!!
 
-        fun bind(book: Books, listener: OnItemClickListener) {
+        fun bind(book: Book, listener: OnItemClickListener) {
             itemView.setOnClickListener {
                 listener.onItemClick(book)
             }

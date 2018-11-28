@@ -5,7 +5,7 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 
 @Entity(tableName = "books")
-data class Books(
+data class Book(
         @PrimaryKey(autoGenerate = true)
         @ColumnInfo(name = "idBook")
         var id: Int = 0,
