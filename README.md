@@ -4,7 +4,7 @@ A internship app to demonstrate skills needed for developing a good, modular and
 # Features
 Some of the features of the app include:
 
-- **Effective Networking** - Using a combination of Retrofit, Rx, Room and LiveData, we are able to handle networking in the most effective way.
+- **Effective Networking** - Using a combination of Retrofit, Rx and Room and, we are able to handle networking in the most effective way.
 - **MVVM architecture** - Using the lifecycle aware viewmodels, the view observes changes in the model / repository.
 - **Kotlin** - This app is completely written in Kotlin.
 - **Android Architecture Components** - Lifecycle awareness has been achieved using a combination of ViewModels and Room.
