@@ -9,6 +9,12 @@ class BooksListViewModel(private val bookRepository: BookRepository) {
 
     fun getBooks(): Observable<List<Book>> {
         return bookRepository.getBooks()
+                .map { it }
+                .onErrorReturn { emptyList() }
+    }
+
+    fun getBookById(id: Int): Book{
+        return bookRepository.getBookByIdFromDb(id)
     }
 
 }

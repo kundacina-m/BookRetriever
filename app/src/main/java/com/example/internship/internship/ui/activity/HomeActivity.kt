@@ -1,5 +1,6 @@
 package com.example.internship.internship.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -44,10 +45,13 @@ class HomeActivity : MvvmActivity(),BooksAdapter.OnItemClickListener {
     }
 
     private fun showBooks(data: List<Book>) {
+        if (!data.isEmpty())
        booksAdapter!!.addBooks(data)
     }
 
     override fun onItemClick(book: Book) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        var intent = Intent(applicationContext, BookDetailsActivity::class.java)
+        intent.putExtra("idBook", book.id)
+        startActivity(intent)
     }
 }
