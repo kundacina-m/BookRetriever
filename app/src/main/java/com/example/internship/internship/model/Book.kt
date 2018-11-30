@@ -16,5 +16,5 @@ data class Book(
         @ColumnInfo(name = "description")
         var description: String = "",
 
-        @ColumnInfo(name = "urlToImage")
-        var urlToImage: String? = null)
+        @ColumnInfo(name = "image")
+        var image: String? = null)

@@ -49,9 +49,10 @@ class HomeActivity : MvvmActivity(),BooksAdapter.OnItemClickListener {
        booksAdapter!!.addBooks(data)
     }
 
+    // Handle click on item from RecyclerView
     override fun onItemClick(book: Book) {
-        var intent = Intent(applicationContext, BookDetailsActivity::class.java)
-        intent.putExtra("idBook", book.id)
+        var intent = Intent(this, BookDetailsActivity::class.java)
+        intent.putExtra("bookTitle", book.title)
         startActivity(intent)
     }
 }

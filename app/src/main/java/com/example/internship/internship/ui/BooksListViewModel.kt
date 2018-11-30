@@ -13,8 +13,8 @@ class BooksListViewModel(private val bookRepository: BookRepository) {
                 .onErrorReturn { emptyList() }
     }
 
-    fun getBookById(id: Int): Book{
-        return bookRepository.getBookByIdFromDb(id)
+    fun getBookByTitle(title: String): Book{
+        return bookRepository.getBookByTitle(title)
     }
 
 }

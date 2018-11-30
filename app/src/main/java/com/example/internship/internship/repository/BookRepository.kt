@@ -16,10 +16,10 @@ class BookRepository(private val bookApi: BookApi, private val bookDao: BookDao)
                 getBooksFromApi())
     }
 
-    fun getBookByIdFromDb(id: Int): Book{
-            return bookDao.getBookById(id)
-
+    fun getBookByTitle(title: String): Book {
+        return bookDao.getBookByTitle(title)
     }
+
 
     private fun getBooksFromDb(): Observable<List<Book>> {
         return bookDao.getBooks().filter { it.isNotEmpty() }

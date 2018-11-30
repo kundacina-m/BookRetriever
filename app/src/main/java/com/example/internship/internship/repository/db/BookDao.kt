@@ -28,7 +28,10 @@ interface BookDao {
     @Query("delete from books")
     fun deleteAllBooks()
 
-    @Query("select * from books where idBook in (:id)")
-    fun getBookById(id: Int): Book
+    /**
+     * Get book by title
+     */
+    @Query("SELECT * FROM books where title in (:title)")
+    fun getBookByTitle(title: String): Book
 
 }

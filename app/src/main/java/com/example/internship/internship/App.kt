@@ -19,11 +19,7 @@ class App : Application() {
         private lateinit var bookListViewModel: BooksListViewModel
         private lateinit var bookDatabase: BooksDatabase
 
-        fun injectBookApi() = bookApi
-
         fun injectBookListViewModel() = bookListViewModel
-
-        fun injectBookDao() = bookDatabase.booksDao()
     }
 
     override fun onCreate() {
@@ -37,7 +33,7 @@ class App : Application() {
 
         bookApi = retrofit.create(BookApi::class.java)
         bookDatabase = Room.databaseBuilder(applicationContext,
-                BooksDatabase::class.java, "books-db").allowMainThreadQueries().build()
+                BooksDatabase::class.java, "books-db").build()
 
         bookRepository = BookRepository(bookApi, bookDatabase.booksDao())
         bookListViewModel = BooksListViewModel(bookRepository)
