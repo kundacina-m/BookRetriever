@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Praksa</string>
+    <string name="title">Naziv</string>
+    <string name="description">Opis</string>
+    <string name="cover_image">Slika</string>
+    <string name="empty_list">Nema dostupnih knjiga</string>
+    <string name="refresh">Osvjezi</string>
+</resources>

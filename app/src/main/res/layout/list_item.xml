@@ -21,11 +21,11 @@
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Title"
+            android:paddingBottom="8dp"
+            android:text="@string/title"
             android:textAlignment="center"
             android:textColor="#404040"
-            android:textSize="22sp"
-            android:paddingBottom="8dp"/>
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/tvDesc"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="Description"
+            android:text="@string/description"
             android:textAlignment="textStart"
             android:textColor="#808080"
             android:textSize="15sp"

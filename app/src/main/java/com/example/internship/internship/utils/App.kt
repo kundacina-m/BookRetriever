@@ -1,4 +1,4 @@
-package com.example.internship.internship
+package com.example.internship.internship.utils
 
 import android.app.Application
 import android.arch.persistence.room.Room
@@ -12,15 +12,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class App : Application() {
 
+    // Used for Dependency Injection
     companion object {
-        private lateinit var retrofit: Retrofit
-        private lateinit var bookApi: BookApi
-        private lateinit var bookRepository: BookRepository
         private lateinit var bookListViewModel: BooksListViewModel
-        private lateinit var bookDatabase: BooksDatabase
-
         fun injectBookListViewModel() = bookListViewModel
     }
+
+    private lateinit var retrofit: Retrofit
+    private lateinit var bookApi: BookApi
+    private lateinit var bookRepository: BookRepository
+    private lateinit var bookDatabase: BooksDatabase
 
     override fun onCreate() {
         super.onCreate()

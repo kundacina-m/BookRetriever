@@ -14,13 +14,13 @@ class BooksAdapter(books: ArrayList<Book>, listener: OnItemClickListener) : Recy
     }
 
     override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
-        var currentBook: Book = listBooks[position]
+        val currentBook: Book = listBooks[position]
 
-        var titleBook = currentBook.title
-        var descriptionBook = currentBook.description
+        val titleBook = currentBook.title
+        val descriptionBook = currentBook.description
 
-        holder!!.mTitle.text = titleBook
-        holder!!.mDescription.text = descriptionBook
+        holder.mTitle.text = titleBook
+        holder.mDescription.text = descriptionBook
 
         holder.bind(currentBook, listenerBooks)
     }

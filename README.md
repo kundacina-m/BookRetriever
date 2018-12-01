@@ -26,10 +26,9 @@ Some of the features of the app include:
 
 # Testing
 
-Research phase.
-
+GUI and manual testing.
 # UI
 
-Just basic elements, needs polishing.
+Three screens, basic design.
 
 

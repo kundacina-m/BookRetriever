@@ -25,7 +25,7 @@ interface BookDao {
     /**
      * Delete all the books from database
      */
-    @Query("delete from books")
+    @Query("DELETE FROM books")
     fun deleteAllBooks()
 
     /**

@@ -66,8 +66,5 @@ dependencies {
     // Anko - async
     implementation "org.jetbrains.anko:anko-commons:0.10.4"
 
-    // Dagger 2 - Dependency injection
-    implementation 'com.google.dagger:dagger:2.13'
-    kapt 'com.google.dagger:dagger-compiler:2.13'
 
 }

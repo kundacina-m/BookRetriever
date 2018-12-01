@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Internship</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="cover_image">Cover Image</string>
+    <string name="empty_list">There are no books available</string>
+    <string name="refresh">Refresh</string>
 </resources>
